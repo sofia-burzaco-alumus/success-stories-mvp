@@ -28,6 +28,6 @@ export async function verifyWebhookSignature(
     ['sign']
   )
   const mac = await crypto.subtle.sign('HMAC', key, encoder.encode(rawBody))
-  const computed = btoa(String.fromCharCode(...new Uint8Array(mac)))
+  const computed = btoa(String.fromCharCode(...Array.from(new Uint8Array(mac))))
   return computed === signature
 }
