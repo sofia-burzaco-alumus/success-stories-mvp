@@ -37,8 +37,8 @@ export function sentimentColor(sentiment: string | null): string {
 
 export function buildCallsQuery(params: URLSearchParams) {
   const filters: Record<string, string> = {}
-  for (const [key, value] of params.entries()) {
+  params.forEach((value, key) => {
     if (value) filters[key] = value
-  }
+  })
   return filters
 }
